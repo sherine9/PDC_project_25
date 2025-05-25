@@ -33,7 +33,7 @@ m_half = m_full - 1   # for a 64×64 Hadamard when n=128
 # build a balanced 64×128 codebook
 def build_codebook(n: int) -> np.ndarray:
     H64 = hadamard(2**m_half)         # 2^(m_half)=64
-    scale = np.sqrt(max_energy*0.9995 / (63 * n))       # meets ‖x‖²=2000 over 63 syms
+    scale = np.sqrt((max_energy*0.9995) / (63 * n))       # meets ‖x‖²=2000 over 63 syms
     C = np.zeros((64, n))
     for i in range(64):
         row = H64[i] * scale                 # length-64 ±scale
